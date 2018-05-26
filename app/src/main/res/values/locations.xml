@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tamura">
+    <item name="lat">34.266506</item>
+        <item name="lng">133.935356</item>
+    </array>
+</resources>
