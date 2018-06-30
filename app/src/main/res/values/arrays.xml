@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="shopname_array">
+        <item>田村　うどん店</item>
+        <item>本格手打ちうどん　おか泉</item>
+        <item>麦のへそ</item>
+        <item>麺処　綿谷</item>
+        <item>山越うどん</item>
+        <item>根ッ子うどん</item>
+        <item>はりや</item>
+        <item>うどん　一福</item>
+        <item>釜揚げうどん　長田in香の香</item>
+        <item>八十八庵</item>
+        <item>香川屋本店</item>
+        <item>岡田うどん店</item>
+
+    </string-array>
+</resources>

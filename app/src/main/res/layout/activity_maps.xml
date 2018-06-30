@@ -10,8 +10,8 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    map:cameraTargetLat="34.31143975565556"
-    map:cameraTargetLng="133.90697870403525"
+    map:cameraTargetLat="34.26466349974738"
+    map:cameraTargetLng="133.8623859733343"
     map:cameraZoom="11"
     tools:context=".MapsActivity" />
 </RelativeLayout>

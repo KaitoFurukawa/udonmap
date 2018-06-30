@@ -4,4 +4,8 @@
     <item name="lat">34.266506</item>
         <item name="lng">133.935356</item>
     </array>
+    <array name="okasen">
+        <item name="lat">34.309448</item>
+        <item name="lng">133.821113</item>
+    </array>
 </resources>
