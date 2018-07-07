@@ -5,6 +5,6 @@ public class Udonya {
     public double lat;
     public double lng;
     public boolean jimoto_flag;
-    public String recommend;
+    public String url;
     public String comment;
 }

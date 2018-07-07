@@ -5,7 +5,7 @@
     "lat": 34.266506,
     "lng": 133.935356,
     "jimoto_flag": true,
-    "recommend": "かけうどん",
+    "url": "https://tabelog.com/kagawa/A3702/A370202/37000077/",
     "comment":"おいしい"
   },
   {
@@ -13,15 +13,15 @@
     "lat": 34.309448,
     "lng": 133.821113,
     "jimoto_flag": true,
-    "recommend": "釜玉うどん",
-    "comment":"おいしい"
+    "url": "https://tabelog.com/kagawa/A3702/A370202/37000074/",
+    "comment":"釜玉うどんがやばい"
   },
   {
     "name": "麦のへそ",
     "lat":  34.258548,
     "lng": 133.768095,
     "jimoto_flag": true,
-    "recommend": "かけうどん",
+    "url": "https://tabelog.com/kagawa/A3702/A370202/37007412/",
     "comment":"おいしい"
   },
   {
@@ -29,7 +29,7 @@
     "lat": 34.296236,
     "lng": 133.796047,
     "jimoto_flag": true,
-    "recommend": "かけうどん",
+    "url": "https://tabelog.com/kagawa/A3702/A370202/37000289/",
     "comment":"おいしい"
   },
   {
@@ -37,7 +37,7 @@
     "lat": 34.225816,
     "lng": 133.928616,
     "jimoto_flag": true,
-    "recommend": "かけうどん",
+    "url": "https://tabelog.com/kagawa/A3702/A370202/37000080/",
     "comment":"おいしい"
   },
   {
@@ -45,7 +45,7 @@
     "lat": 34.258709,
     "lng": 133.75253,
     "jimoto_flag": true,
-    "recommend": "かけうどん",
+    "url": "https://tabelog.com/kagawa/A3702/A370202/37000533/",
     "comment":"超近所！"
   },
   {
@@ -53,15 +53,15 @@
     "lat": 34.349348,
     "lng": 134.015145,
     "jimoto_flag": true,
-    "recommend": "肉うどん",
-    "comment":"おいしい"
+    "url": "https://tabelog.com/kagawa/A3701/A370101/37000049/",
+    "comment":"肉うどんがおいしいです"
   },
   {
     "name": "うどん　一福",
     "lat": 34.308049,
     "lng": 133.975292,
     "jimoto_flag": true,
-    "recommend": "かけうどん",
+    "url": "https://tabelog.com/kagawa/A3701/A370101/37001209/",
     "comment":"おいしい"
   }
 ]

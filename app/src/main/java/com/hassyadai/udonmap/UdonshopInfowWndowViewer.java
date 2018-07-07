@@ -14,14 +14,12 @@ import java.util.List;
 public class UdonshopInfowWndowViewer implements GoogleMap.InfoWindowAdapter {
     private View infoWindowView;
     private TextView shopNameTextView;
-    private TextView recommendTextView;
     private List<Udonya> udonyaList;
     private TextView commentTextView;
 
     public UdonshopInfowWndowViewer(Activity activity, List<Udonya> udonyaList){
         infoWindowView = activity.getLayoutInflater().inflate(R.layout.infowindow_udonshop,null);
         shopNameTextView = infoWindowView.findViewById(R.id.shopNameTextView);
-        recommendTextView = infoWindowView.findViewById(R.id.recommendTextView);
         commentTextView = infoWindowView.findViewById(R.id.commentTextView);
         this.udonyaList = udonyaList;
 
@@ -29,10 +27,8 @@ public class UdonshopInfowWndowViewer implements GoogleMap.InfoWindowAdapter {
     @Override
     public View getInfoWindow(Marker marker) {
         shopNameTextView.setText(marker.getTitle());
-        recommendTextView.setText(marker.getSnippet());
         for(int i = 0;i < udonyaList.size();i++){
             Udonya udonya = udonyaList.get(i);
-            Log.d("ろぐ",""+marker.getTitle()+". "+udonya.name);
             if(marker.getTitle().equals(udonya.name) ){
                 commentTextView.setText(udonya.comment);
             }
@@ -43,8 +39,6 @@ public class UdonshopInfowWndowViewer implements GoogleMap.InfoWindowAdapter {
 
     @Override
     public View getInfoContents(Marker marker) {
-        Log.d("ろぐ","" + marker.getTitle());
-
         return null;
     }
 

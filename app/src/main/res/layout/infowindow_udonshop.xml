@@ -19,20 +19,11 @@
         tools:text="" />
 
     <TextView
-        android:id="@+id/recommendTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#3a3a3a"
-        android:textSize="16sp"
-        tools:text="かけうどん" />
-
-    <TextView
         android:id="@+id/commentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#3a3a3a"
         android:textSize="14sp"
         tools:text="おいしい"/>
-
 
 </LinearLayout>

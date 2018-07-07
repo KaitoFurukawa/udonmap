@@ -1,7 +1,11 @@
 package com.hassyadai.udonmap;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -9,6 +13,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -79,27 +84,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //うどん屋の情報とマーカーをマップ上に表示
         for(int i = 0;i < udonyaList.size();i++){
             Udonya udonya =udonyaList.get(i);
-            mMap.addMarker(new MarkerOptions().position(new LatLng(udonya.lat,udonya.lng)).title(udonya.name).snippet(udonya.recommend));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(udonya.lat,udonya.lng)).title(udonya.name).snippet(udonya.url));
         }
 
         mMap.setInfoWindowAdapter(new UdonshopInfowWndowViewer(this,udonyaList));
-
-
-
-
-
-        // Add a marker in Sydney and move the camera
-       // for(int i=0;i<13;i++){
-          //  mMap.addMarker(new MarkerOptions().position(LocationsConstant.TAMURA).title(getResources().getStringArray(R.array.shopname_array)));
-     //   }
-//        mMap.addMarker(new MarkerOptions().position(LocationsConstant.TAMURA).title("田村　うどん店"));
-//        mMap.addMarker(new MarkerOptions().position(LocationsConstant.OKASEN).title("本格手打ちうどん　おか泉"));
-//        mMap.addMarker(new MarkerOptions().position(LocationsConstant.MUGINOHESO).title("麦のへそ"));
-//        mMap.addMarker(new MarkerOptions().position(LocationsConstant.WATAYA).title("麺処　綿谷"));
-//        mMap.addMarker(new MarkerOptions().position(LocationsConstant.YAMAGOE).title("山越うどん"));
-//        mMap.addMarker(new MarkerOptions().position(LocationsConstant.NEKKO).title("根ッ子うどん"));
-
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(Kagawa));
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+//                Uri uri = Uri.parse(marker.getSnippet());
+//                Intent i = new Intent(Intent.ACTION_VIEW,uri);
+//                startActivity(i);
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                final CustomTabsIntent tabsIntent = builder
+                        .setShowTitle(false)
+                        .setToolbarColor(ContextCompat.getColor(MapsActivity.this, R.color.colorPrimary))
+                        .enableUrlBarHiding().build();
+                tabsIntent.launchUrl(MapsActivity.this, Uri.parse(marker.getSnippet()));
+            }
+        });
         mMap.setOnMapClickListener(this);
     }
 }
