@@ -29,6 +29,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
+
+    List<Udonya> udonyaList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         InputStream inputStream = null;
 
         //jsonに格納した情報を代入
@@ -70,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Gsonを使ってjsonをjavaに読み込み
         JsonReader jsonReader = new JsonReader(new InputStreamReader(inputStream));
         Type type = new TypeToken<List<Udonya>>(){}.getType();
-        List<Udonya> udonyaList = new Gson().fromJson(jsonReader,type);
+        udonyaList = new Gson().fromJson(jsonReader,type);
 
         //うどん屋の情報とマーカーをマップ上に表示
         for(int i = 0;i < udonyaList.size();i++){
@@ -78,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(new LatLng(udonya.lat,udonya.lng)).title(udonya.name).snippet(udonya.recommend));
         }
 
-        mMap.setInfoWindowAdapter(new UdonshopInfowWndowViewer(this));
+        mMap.setInfoWindowAdapter(new UdonshopInfowWndowViewer(this,udonyaList));
 
 
 
