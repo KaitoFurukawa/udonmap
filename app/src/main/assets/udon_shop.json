@@ -1,0 +1,67 @@
+//うどん屋の情報を配列に格納
+[
+  {
+    "name": "田村　うどん店",
+    "lat": 34.266506,
+    "lng": 133.935356,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  },
+  {
+    "name": "本格手打ちうどん　おか泉",
+    "lat": 34.309448,
+    "lng": 133.821113,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  },
+  {
+    "name": "麦のへそ",
+    "lat":  34.258548,
+    "lng": 133.768095,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  },
+  {
+    "name": "麺処　綿谷",
+    "lat": 34.296236,
+    "lng": 133.796047,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  },
+  {
+    "name": "山越うどん",
+    "lat": 34.225816,
+    "lng": 133.928616,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  },
+  {
+    "name": "根ッ子うどん",
+    "lat": 34.258709,
+    "lng": 133.75253,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  },
+  {
+    "name": "はりや",
+    "lat": 34.349348,
+    "lng": 134.015145,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  },
+  {
+    "name": "うどん　一福",
+    "lat": 34.308049,
+    "lng": 133.975292,
+    "jimoto_flag": true,
+    "recommend": "かけうどん",
+    "comment":"おいしい"
+  }
+]
