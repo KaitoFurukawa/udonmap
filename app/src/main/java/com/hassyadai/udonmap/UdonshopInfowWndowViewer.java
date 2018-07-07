@@ -28,12 +28,6 @@ public class UdonshopInfowWndowViewer implements GoogleMap.InfoWindowAdapter {
     }
     @Override
     public View getInfoWindow(Marker marker) {
-        return null;
-    }
-
-    @Override
-    public View getInfoContents(Marker marker) {
-        Log.d("ろぐ","" + marker.getTitle());
         shopNameTextView.setText(marker.getTitle());
         recommendTextView.setText(marker.getSnippet());
         for(int i = 0;i < udonyaList.size();i++){
@@ -45,6 +39,13 @@ public class UdonshopInfowWndowViewer implements GoogleMap.InfoWindowAdapter {
         }
 
         return infoWindowView;
+    }
+
+    @Override
+    public View getInfoContents(Marker marker) {
+        Log.d("ろぐ","" + marker.getTitle());
+
+        return null;
     }
 
 }
