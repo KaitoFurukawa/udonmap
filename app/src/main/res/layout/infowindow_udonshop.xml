@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:shadowColor="#000000"
+        android:shadowColor="#424242"
         android:shadowDx="2.0"
         android:shadowDy="2.0"
         android:shadowRadius="2.0"
@@ -24,6 +24,6 @@
         android:layout_height="wrap_content"
         android:textColor="#3a3a3a"
         android:textSize="14sp"
-        tools:text="おいしい"/>
+        tools:text=""/>
 
 </LinearLayout>
