@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -81,11 +82,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Type type = new TypeToken<List<Udonya>>(){}.getType();
         udonyaList = new Gson().fromJson(jsonReader,type);
 
-        //うどん屋の情報とマーカーをマップ上に表示
-        for(int i = 0;i < udonyaList.size();i++){
+        for (int i = 0; i < udonyaList.size(); i++) {
             Udonya udonya =udonyaList.get(i);
-            mMap.addMarker(new MarkerOptions().position(new LatLng(udonya.lat,udonya.lng)).title(udonya.name).snippet(udonya.url));
+            MarkerOptions o = new MarkerOptions();
+            o.icon(BitmapDescriptorFactory
+                    .fromResource(R.drawable.mapmarker));
+            o.position(new LatLng(udonya.lat, udonya.lng));
+            // o.alpha(0.6f);
+            o.title(udonya.name);
+            o.snippet(udonya.url);
+            o.anchor(0.5f, 0.5f);
+            mMap.addMarker(o);
         }
+
+        //うどん屋の情報とマーカーをマップ上に表示
+       // for(int i = 0;i < udonyaList.size();i++){
+//            Udonya udonya =udonyaList.get(i);
+//            mMap.addMarker(new MarkerOptions().position(new LatLng(udonya.lat,udonya.lng)).title(udonya.name).snippet(udonya.url));
+//        }
 
         mMap.setInfoWindowAdapter(new UdonshopInfowWndowViewer(this,udonyaList));
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
