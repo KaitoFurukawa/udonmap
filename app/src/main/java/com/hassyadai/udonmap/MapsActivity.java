@@ -2,6 +2,7 @@ package com.hassyadai.udonmap;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -16,6 +17,14 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -80,6 +89,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Gsonを使ってjsonをjavaに読み込み
         JsonReader jsonReader = new JsonReader(new InputStreamReader(inputStream));
         Type type = new TypeToken<List<Udonya>>(){}.getType();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+//        CollectionReference docRef = db.collection("udonshop");
+        db.collection("udon")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d("ろぐ", document.getId() + " => " + document.getData());
+                   }
+                } else {
+                    Log.d("", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+
+
         udonyaList = new Gson().fromJson(jsonReader,type);
 
         for (int i = 0; i < udonyaList.size(); i++) {
