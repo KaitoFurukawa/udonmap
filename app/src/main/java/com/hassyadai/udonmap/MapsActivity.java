@@ -93,9 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 //        CollectionReference docRef = db.collection("udonshop");
-        db.collection("udon")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("udon").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
