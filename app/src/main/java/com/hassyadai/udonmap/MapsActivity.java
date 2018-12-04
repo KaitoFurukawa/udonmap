@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
@@ -40,21 +42,34 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap;
+    public  AdView mAdview;
 
 
-    List<Udonya> udonyaList;
+    List<Udonya> udonyaList = new ArrayList<>();
+    List<GeoPoint> geoPointList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        MobileAds.initialize(this, "ca-app-pub-7512185854069018~8799665230");
+
+        mAdview = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdview.loadAd(adRequest);
     }
 
     @Override
@@ -80,48 +95,70 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         InputStream inputStream = null;
 
         //jsonに格納した情報を代入
-        try{
-            inputStream = getAssets().open("udon_shop.json");
-
-        } catch (Exception e) {     //エラーが出えたときの行動
-
-        }
-        //Gsonを使ってjsonをjavaに読み込み
-        JsonReader jsonReader = new JsonReader(new InputStreamReader(inputStream));
-        Type type = new TypeToken<List<Udonya>>(){}.getType();
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        try{
+//            inputStream = getAssets().open("udon_shop.json");
+//
+//        } catch (Exception e) {     //エラーが出えたときの行動
+//
+//        }
+//        //Gsonを使ってjsonをjavaに読み込み
+//        JsonReader jsonReader = new JsonReader(new InputStreamReader(inputStream));
+//        Type type = new TypeToken<List<Udonya>>(){}.getType();
+//
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 //        CollectionReference docRef = db.collection("udonshop");
-        db.collection("udon").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//        db.collection("udonshop").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+////                        Log.d("ろぐ", document.getId() + " => " + document.getData());
+//                        String name = (String)document.getData().get("name");
+//                        String comment = (String)document.getData().get("comment");
+//                        GeoPoint location = (GeoPoint) document.getData().get("location");
+//                        String url = (String)document.getData().get("url");
+//                        Udonya udonya = new Udonya();
+//                        udonya.name = name;
+//                        udonya.comment = comment;
+//                        udonya.location = location;
+//                        udonya.url = url;
+//                        udonyaList.add(udonya);
+//                        double lat = udonya.location.getLatitude();
+//                        double lng = udonya.location.getLongitude();
+//                        MarkerOptions o = new MarkerOptions();
+//                        o.icon(BitmapDescriptorFactory
+//                                .fromResource(R.drawable.mapmarker));
+//                        o.position(new LatLng(lat,lng));
+//                        // o.alpha(0.6f);
+//                        o.title(udonya.name);
+//                        o.snippet(udonya.url);
+//                        o.anchor(0.5f, 0.5f);
+//                        mMap.addMarker(o);
+//
+//                   }
+//                } else {
+//                    Log.d("", "Error getting documents: ", task.getException());
+//                }
+//            }
+//        });
+//        udonyaList = new Gson().fromJson(jsonReader,type);
 
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Log.d("ろぐ", document.getId() + " => " + document.getData());
-                   }
-                } else {
-                    Log.d("", "Error getting documents: ", task.getException());
-                }
-            }
-        });
-
-
-        udonyaList = new Gson().fromJson(jsonReader,type);
-
-        for (int i = 0; i < udonyaList.size(); i++) {
-            Udonya udonya =udonyaList.get(i);
-            MarkerOptions o = new MarkerOptions();
-            o.icon(BitmapDescriptorFactory
-                    .fromResource(R.drawable.mapmarker));
-            o.position(new LatLng(udonya.lat, udonya.lng));
-            // o.alpha(0.6f);
-            o.title(udonya.name);
-            o.snippet(udonya.url);
-            o.anchor(0.5f, 0.5f);
-            mMap.addMarker(o);
-        }
+//        for (int i = 0; i < udonyaList.size(); i++) {
+//            Udonya udonya = udonyaList.get(i);
+//            double lat = udonya.location.getLatitude();
+//            double lng = udonya.location.getLongitude();
+//            MarkerOptions o = new MarkerOptions();
+//            o.icon(BitmapDescriptorFactory
+//                    .fromResource(R.drawable.mapmarker));
+//            o.position(new LatLng(lat,lng));
+//            // o.alpha(0.6f);
+//            o.title(udonya.name);
+//            o.snippet(udonya.url);
+//            o.anchor(0.5f, 0.5f);
+//            mMap.addMarker(o);
+//        }
 
         //うどん屋の情報とマーカーをマップ上に表示
        // for(int i = 0;i < udonyaList.size();i++){
