@@ -103,46 +103,46 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        }
 //        //Gsonを使ってjsonをjavaに読み込み
 //        JsonReader jsonReader = new JsonReader(new InputStreamReader(inputStream));
-//        Type type = new TypeToken<List<Udonya>>(){}.getType();
-//
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Type type = new TypeToken<List<Udonya>>(){}.getType();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 //        CollectionReference docRef = db.collection("udonshop");
-//        db.collection("udonshop").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    for (QueryDocumentSnapshot document : task.getResult()) {
-////                        Log.d("ろぐ", document.getId() + " => " + document.getData());
-//                        String name = (String)document.getData().get("name");
-//                        String comment = (String)document.getData().get("comment");
-//                        GeoPoint location = (GeoPoint) document.getData().get("location");
-//                        String url = (String)document.getData().get("url");
-//                        Udonya udonya = new Udonya();
-//                        udonya.name = name;
-//                        udonya.comment = comment;
-//                        udonya.location = location;
-//                        udonya.url = url;
-//                        udonyaList.add(udonya);
-//                        double lat = udonya.location.getLatitude();
-//                        double lng = udonya.location.getLongitude();
-//                        MarkerOptions o = new MarkerOptions();
-//                        o.icon(BitmapDescriptorFactory
-//                                .fromResource(R.drawable.mapmarker));
-//                        o.position(new LatLng(lat,lng));
-//                        // o.alpha(0.6f);
-//                        o.title(udonya.name);
-//                        o.snippet(udonya.url);
-//                        o.anchor(0.5f, 0.5f);
-//                        mMap.addMarker(o);
-//
-//                   }
-//                } else {
-//                    Log.d("", "Error getting documents: ", task.getException());
-//                }
-//            }
-//        });
+        db.collection("udonshop").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        Log.d("ろぐ", document.getId() + " => " + document.getData());
+                        String name = (String)document.getData().get("name");
+                        String comment = (String)document.getData().get("comment");
+                        GeoPoint location = (GeoPoint) document.getData().get("location");
+                        String url = (String)document.getData().get("url");
+                        Udonya udonya = new Udonya();
+                        udonya.name = name;
+                        udonya.comment = comment;
+                        udonya.location = location;
+                        udonya.url = url;
+                        udonyaList.add(udonya);
+                        double lat = udonya.location.getLatitude();
+                        double lng = udonya.location.getLongitude();
+                        MarkerOptions o = new MarkerOptions();
+                        o.icon(BitmapDescriptorFactory
+                                .fromResource(R.drawable.mapmarker));
+                        o.position(new LatLng(lat,lng));
+                        // o.alpha(0.6f);
+                        o.title(udonya.name);
+                        o.snippet(udonya.url);
+                        o.anchor(0.5f, 0.5f);
+                        mMap.addMarker(o);
+
+                   }
+                } else {
+                    Log.d("", "Error getting documents: ", task.getException());
+                }
+            }
+        });
 //        udonyaList = new Gson().fromJson(jsonReader,type);
 
 //        for (int i = 0; i < udonyaList.size(); i++) {
