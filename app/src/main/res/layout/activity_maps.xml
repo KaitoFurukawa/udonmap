@@ -14,7 +14,7 @@
     android:layout_centerInParent="true"
     map:cameraTargetLat="34.26466349974738"
     map:cameraTargetLng="133.8623859733343"
-    map:cameraZoom="11"
+    map:cameraZoom="11.2"
     tools:context=".MapsActivity" />
 
     <com.google.android.gms.ads.AdView

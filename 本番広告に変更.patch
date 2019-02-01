@@ -1,0 +1,16 @@
+Index: app/src/main/res/layout/activity_maps.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_maps.xml	(revision 8c8cb9c4b938b53b95c2d9e4a7b76aa58515c58c)
++++ app/src/main/res/layout/activity_maps.xml	(date 1548987270000)
+@@ -14,7 +14,7 @@
+     android:layout_centerInParent="true"
+     map:cameraTargetLat="34.26466349974738"
+     map:cameraTargetLng="133.8623859733343"
+-    map:cameraZoom="11"
++    map:cameraZoom="11.2"
+     tools:context=".MapsActivity" />
+ 
+     <com.google.android.gms.ads.AdView
