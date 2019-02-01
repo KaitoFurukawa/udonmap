@@ -98,7 +98,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        try{
 //            inputStream = getAssets().open("udon_shop.json");
 //
-//        } catch (Exception e) {     //エラーが出えたときの行動
+//        } catch (Exception e) {     //エラーが出えたときの行動あ
 //
 //        }
 //        //Gsonを使ってjsonをjavaに読み込み
