@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:shadowColor="#424242"
+        android:shadowColor="#F2F2F2"
         android:shadowDx="2.0"
         android:shadowDy="2.0"
         android:shadowRadius="2.0"
@@ -22,7 +22,7 @@
         android:id="@+id/commentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#3a3a3a"
+        android:textColor="#298A08"
         android:textSize="14sp"
         tools:text=""/>
 
